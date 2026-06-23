@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Taskade light "beige" palette -->
+    <!-- App canvas behind the auth sheet -->
+    <color name="beige_background">#F3EADB</color>
+    <!-- Slightly deeper beige used for the status bar / top fade -->
+    <color name="beige_background_deep">#EADFCB</color>
+    <!-- The card / sheet surface -->
+    <color name="cream_surface">#FFFCF6</color>
+    <!-- Input field fill -->
+    <color name="field_fill">#F7F0E4</color>
+    <!-- Input + divider outline -->
+    <color name="outline">#E4D9C6</color>
+
+    <!-- Primary action (buttons) — warm espresso so it sits well on beige -->
+    <color name="primary">#2C2722</color>
+    <color name="primary_pressed">#423A31</color>
+    <color name="on_primary">#FBF5EA</color>
+
+    <!-- Text -->
+    <color name="ink">#2A2622</color>
+    <color name="muted">#9A8F7C</color>
+    <color name="danger">#C0492F</color>
+
+    <!-- Glassmorphism (dock) — translucent frosted surface over the content -->
+    <color name="glass_surface">#B8FCF7EE</color>
+    <color name="glass_highlight">#7AFFFFFF</color>
+    <color name="glass_stroke">#80FFFFFF</color>
+    <!-- Tint laid over the live blur so it reads as warm frosted glass, not a plain blur -->
+    <color name="glass_overlay">#59FCF7EE</color>
+
+    <!-- Chat bubbles -->
+    <color name="bubble_agent">#FFFFFDF8</color>
+    <color name="bubble_agent_text">#2A2622</color>
+    <color name="bubble_user">#2C2722</color>
+    <color name="bubble_user_text">#FBF5EA</color>
+
+    <!-- Presence -->
+    <color name="online">#3FB67E</color>
+
+    <!-- Bounded card ripple (~12% primary) -->
+    <color name="ripple_primary">#1F2C2722</color>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rounded view-toggle button in the Tasks header. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/outline">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/field_fill" />
+            <stroke
+                android:width="1dp"
+                android:color="@color/outline" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+</ripple>

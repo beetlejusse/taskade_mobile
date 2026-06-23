@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Rounded "grab handle" shown at the top of the auth sheet. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="3dp" />
+    <solid android:color="@color/outline" />
+</shape>

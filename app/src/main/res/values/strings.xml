@@ -1,0 +1,142 @@
+<resources>
+    <string name="app_name">TASKADE</string>
+
+    <!-- Auth0 configuration -->
+    <string name="com_auth0_domain">dev-ave77eatudglccjz.us.auth0.com</string>
+    <string name="com_auth0_client_id">h4a7gISwYGPLWyCy82kD7OvcCVDJ4yPF</string>
+    <!--
+      Kept only so the Auth0 SDK's RedirectActivity has a scheme to merge. The app
+      now uses native (in-app) login, so no browser redirect actually happens.
+    -->
+    <string name="com_auth0_scheme">https</string>
+
+    <!-- Auth0 database connection used for email/password login & signup. -->
+    <string name="auth0_db_connection">Username-Password-Authentication</string>
+
+    <!--
+      Google *Web* OAuth client ID (NOT the Android one). Used both as the
+      Credential Manager serverClientId and as the Client ID configured in the
+      Auth0 google-oauth2 connection. Replace with your own Web client ID.
+    -->
+    <string name="google_web_client_id">612496506618-0eak6p0ktkdjgn8t5l4oc19hmos17nag.apps.googleusercontent.com</string>
+
+    <!-- Branding -->
+    <string name="brand_name">TASKADE</string>
+    <string name="brand_tagline">Organize everything, together</string>
+
+    <!-- Login screen -->
+    <string name="login_title">Welcome to Taskade</string>
+    <string name="login_subtitle">Sign in to continue</string>
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Password</string>
+    <string name="login_button">Log in</string>
+    <string name="login_google_button">Continue with Google</string>
+    <string name="login_or">or</string>
+    <string name="login_no_account">Don\'t have an account? Sign up</string>
+    <string name="login_failed">Login failed: %1$s</string>
+    <string name="google_login_failed">Google sign-in failed: %1$s</string>
+
+    <!-- Sign-up screen -->
+    <string name="signup_title">Create your account</string>
+    <string name="signup_subtitle">Sign up to get started</string>
+    <string name="signup_email_hint">Email</string>
+    <string name="signup_password_hint">Password</string>
+    <string name="signup_confirm_hint">Confirm password</string>
+    <string name="signup_button">Sign up</string>
+    <string name="signup_have_account">Already have an account? Log in</string>
+    <string name="signup_failed">Sign-up failed: %1$s</string>
+
+    <!-- Validation -->
+    <string name="error_email_required">Enter your email</string>
+    <string name="error_email_invalid">Enter a valid email</string>
+    <string name="error_password_required">Enter your password</string>
+    <string name="error_password_too_short">Password must be at least 8 characters</string>
+    <string name="error_passwords_mismatch">Passwords do not match</string>
+
+    <!-- Chat screen (DIVYA) -->
+    <string name="agent_name">DIVYA</string>
+    <string name="agent_status">Online</string>
+    <string name="user_avatar">Your avatar</string>
+    <string name="composer_hint">Message DIVYA…</string>
+    <string name="composer_send">Send message</string>
+
+    <!-- Dock component -->
+    <string name="dock_tasks">Tasks</string>
+    <string name="dock_chat">Chat</string>
+    <string name="dock_calendar">Calendar</string>
+    <string name="dock_profile">Profile</string>
+    <string name="dock_voice">Voice input</string>
+    <string name="dock_keyboard_toggle">Toggle keyboard input</string>
+    <string name="dock_chip_type">Type</string>
+    <string name="dock_chip_voice">Speak</string>
+    <string name="coming_soon">Coming soon</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_user_name">Vishal</string>
+    <string name="settings_user_email">vishal@example.com</string>
+    <string name="settings_avatar">Profile photo</string>
+
+    <string name="settings_profile">Profile</string>
+    <string name="settings_profile_sub">Edit name, avatar and bio</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_notifications_sub">Push, sounds and badges</string>
+    <string name="settings_privacy">Privacy &amp; Security</string>
+    <string name="settings_privacy_sub">Permissions, visibility, sessions</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_appearance_sub">Theme, font scale, accent</string>
+    <string name="settings_about">About &amp; Help</string>
+    <string name="settings_about_sub">Version, support and feedback</string>
+    <string name="settings_sign_out">Sign Out</string>
+    <string name="settings_sign_out_sub">Log out of your account</string>
+
+    <string name="settings_chevron">Open</string>
+    <string name="settings_saved">Saved</string>
+    <string name="settings_save_changes">Save Changes</string>
+    <string name="settings_cancel">Cancel</string>
+    <string name="settings_close">Close</string>
+
+    <!-- Profile sheet -->
+    <string name="settings_field_name">Display name</string>
+    <string name="settings_field_bio">Bio</string>
+
+    <!-- Notifications sheet -->
+    <string name="settings_notif_push">Push notifications</string>
+    <string name="settings_notif_sound">Sounds</string>
+    <string name="settings_notif_badges">App badges</string>
+
+    <!-- Privacy sheet -->
+    <string name="settings_privacy_visibility">Show online status</string>
+    <string name="settings_privacy_analytics">Share usage analytics</string>
+
+    <!-- Appearance sheet -->
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system">System default</string>
+
+    <!-- About sheet -->
+    <string name="settings_version">DIVYA · Version 1.0</string>
+    <string name="settings_changelog">Changelog</string>
+    <string name="settings_support">Support</string>
+    <string name="settings_feedback">Send feedback</string>
+
+    <!-- Sign-out sheet -->
+    <string name="settings_sign_out_confirm">Are you sure you want to sign out?</string>
+
+    <!-- Tasks screen -->
+    <string name="tasks_title">Tasks</string>
+    <string name="tasks_subtitle">This screen is coming soon.</string>
+    <string name="tasks_greeting">greetings,</string>
+    <!-- Placeholder until the signed-in user's name is fetched dynamically. -->
+    <string name="tasks_user_placeholder">Vishal</string>
+    <string name="tasks_toggle_view">Switch between grid and list view</string>
+    <string name="tasks_due">Due date</string>
+
+    <!-- Home screen -->
+    <string name="home_welcome_placeholder">Loading…</string>
+    <string name="home_welcome">Hello, %1$s</string>
+    <string name="home_default_user">there</string>
+    <string name="logout_button">Log out</string>
+    <string name="logout_failed">Logout failed: %1$s</string>
+    <string name="profile_failed">Could not load profile: %1$s</string>
+</resources>

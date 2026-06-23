@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The outgoing/incoming screen holds in place while the other slides. -->
+<translate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="350"
+    android:fromYDelta="0"
+    android:toYDelta="0" />

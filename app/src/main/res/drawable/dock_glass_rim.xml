@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Rim/highlight drawn over the dock's live blur (BlurView foreground). Transparent
+  fill so the blur shows through; only the light stroke renders, giving the frosted
+  panel a crisp glassy edge.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@android:color/transparent" />
+    <stroke
+        android:width="1.5dp"
+        android:color="@color/glass_stroke" />
+    <corners android:radius="34dp" />
+</shape>

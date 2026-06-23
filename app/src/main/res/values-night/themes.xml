@@ -1,0 +1,34 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+      The Taskade brand theme is intentionally light-only. We mirror the light
+      "beige" theme here so that switching the device to dark mode does not alter
+      the app's appearance.
+    -->
+    <style name="Base.Theme.Taskade_mobile" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="colorSurface">@color/cream_surface</item>
+        <item name="colorOnSurface">@color/ink</item>
+        <item name="colorOnSurfaceVariant">@color/muted</item>
+        <item name="colorOutline">@color/outline</item>
+        <item name="colorError">@color/danger</item>
+        <item name="android:colorBackground">@color/beige_background</item>
+        <item name="colorSurfaceContainerLowest">@color/cream_surface</item>
+
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:fontFamily">@font/montserrat</item>
+
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Taskade.HeadlineMedium</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Taskade.TitleLarge</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.Taskade.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.Taskade.BodyMedium</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.Taskade.LabelLarge</item>
+
+        <item name="materialButtonStyle">@style/Widget.Taskade.Button.Primary</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/beige_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+</resources>
