@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Concave-notch dock: two glass pills whose inner edges curve inward to cradle a
+  detached voice orb, with a keyboard-toggle chip floating above. Blur and notch
+  geometry are configured by DockView at runtime.
+
+  The pill row is nudged up by (orb - pill height)/2 so the orb, anchored to the
+  dock bottom, ends up centered vertically on the pills (and horizontally in the
+  gap) while still protruding symmetrically into the notches.
+-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- ===== Left + right pills with the orb gap between them ===== -->
+    <LinearLayout
+        android:id="@+id/dockRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="4dp"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <com.app.taskade_mobile.ui.PillBlurView
+            android:id="@+id/dockLeftPill"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingEnd="24dp">
+
+                <ImageButton
+                    android:id="@+id/dockButtonTasks"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_nav_squircle"
+                    android:contentDescription="@string/dock_tasks"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_tasks"
+                    android:tint="@color/muted" />
+
+                <ImageButton
+                    android:id="@+id/dockButtonChat"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_nav_squircle"
+                    android:contentDescription="@string/dock_chat"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_chat"
+                    android:tint="@color/muted" />
+            </LinearLayout>
+        </com.app.taskade_mobile.ui.PillBlurView>
+
+        <!-- Width is recomputed by DockView so the orb sits concentric with the notch. -->
+        <Space
+            android:id="@+id/dockOrbGap"
+            android:layout_width="54dp"
+            android:layout_height="1dp" />
+
+        <com.app.taskade_mobile.ui.PillBlurView
+            android:id="@+id/dockRightPill"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="24dp"
+                android:paddingEnd="18dp">
+
+                <ImageButton
+                    android:id="@+id/dockButtonCalendar"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_nav_squircle"
+                    android:contentDescription="@string/dock_calendar"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_calendar"
+                    android:tint="@color/muted" />
+
+                <ImageButton
+                    android:id="@+id/dockButtonProfile"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="20dp"
+                    android:background="@drawable/bg_nav_squircle"
+                    android:contentDescription="@string/dock_profile"
+                    android:padding="10dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_profile"
+                    android:tint="@color/muted" />
+            </LinearLayout>
+        </com.app.taskade_mobile.ui.PillBlurView>
+    </LinearLayout>
+
+    <!-- ===== Detached voice orb, centered on the pill row ===== -->
+    <ImageButton
+        android:id="@+id/dockButtonVoice"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/bg_center_button"
+        android:contentDescription="@string/dock_voice"
+        android:elevation="12dp"
+        android:padding="19dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_waveform"
+        android:tint="@color/on_primary"
+        tools:ignore="UseAppTint" />
+
+    <!-- ===== Keyboard / voice toggle chip, floating above the orb ===== -->
+    <eightbitlab.com.blurview.BlurView
+        android:id="@+id/dockKeyboardChip"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="80dp"
+        android:elevation="6dp"
+        android:foreground="@drawable/dock_glass_rim">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="14dp">
+
+            <ImageView
+                android:id="@+id/dockChipIcon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:contentDescription="@string/dock_keyboard_toggle"
+                android:src="@drawable/ic_keyboard"
+                app:tint="@color/ink"
+                xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            <TextView
+                android:id="@+id/dockChipLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/dock_chip_type"
+                android:textColor="@color/ink"
+                android:textFontWeight="600"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </eightbitlab.com.blurview.BlurView>
+
+</merge>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/themeGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/themeLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:fontFamily="@font/montserrat"
+            android:minHeight="48dp"
+            android:text="@string/settings_theme_light"
+            android:textColor="@color/ink"
+            android:textSize="15sp" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/themeDark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:minHeight="48dp"
+            android:text="@string/settings_theme_dark"
+            android:textColor="@color/ink"
+            android:textSize="15sp" />
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/themeSystem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:minHeight="48dp"
+            android:text="@string/settings_theme_system"
+            android:textColor="@color/ink"
+            android:textSize="15sp" />
+    </RadioGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sheetSaveButton"
+        style="@style/Widget.Taskade.Button.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/settings_save_changes" />
+</LinearLayout>

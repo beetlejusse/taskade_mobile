@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/montserrat"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/settings_sign_out_confirm"
+        android:textColor="@color/muted"
+        android:textFontWeight="500"
+        android:textSize="15sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sheetSignOutButton"
+        style="@style/Widget.Taskade.Button.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/settings_sign_out"
+        app:backgroundTint="@color/danger" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sheetCancelButton"
+        style="@style/Widget.Taskade.Button.Link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/settings_cancel" />
+</LinearLayout>

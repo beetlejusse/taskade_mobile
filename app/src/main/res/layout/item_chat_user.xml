@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- User message: bubble right-aligned, user avatar on the far right. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="18dp"
+    android:paddingVertical="7dp">
+
+    <ImageView
+        android:id="@+id/userAvatar"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/bg_avatar_user"
+        android:contentDescription="@string/user_avatar"
+        android:padding="7dp"
+        android:src="@drawable/ic_person"
+        app:layout_constraintBottom_toBottomOf="@id/userBubble"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/userBubble"
+        app:tint="@color/muted" />
+
+    <TextView
+        android:id="@+id/userBubble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/bg_chat_bubble_user"
+        android:fontFamily="@font/montserrat"
+        android:lineSpacingMultiplier="1.15"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:textColor="@color/bubble_user_text"
+        android:textSize="15sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/userAvatar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Remind me to review the design at 5pm." />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
