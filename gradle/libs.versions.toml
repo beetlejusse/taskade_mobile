@@ -14,6 +14,16 @@ credentials = "1.3.0"
 googleid = "1.1.1"
 lifecycle = "2.8.7"
 coroutines = "1.8.1"
+okhttp = "4.12.0"
+retrofit = "2.11.0"
+serialization = "1.6.3"
+# 1.20.0 is the first release whose native .so files are 16 KB-page aligned, which
+# Android 15 requires on 16 KB-page devices (older builds fail dlopen there).
+onnxruntime = "1.20.0"
+playServicesLocation = "21.3.0"
+recyclerview = "1.3.2"
+googleServices = "4.4.2"
+firebaseBom = "33.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -31,7 +41,27 @@ googleid = { group = "com.google.android.libraries.identity.googleid", name = "g
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
+# Networking — WebSocket (voice) + REST companion to the backend.
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
+
+# On-device Silero VAD (barge-in only) + device location for profile context.
+onnxruntime-android = { group = "com.microsoft.onnxruntime", name = "onnxruntime-android", version.ref = "onnxruntime" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
+
+# Used by the chat + tasks lists (already on the classpath via material, declared explicitly).
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+
+# Firebase Cloud Messaging — push delivery for task reminders. Version comes from
+# the BoM platform, so the messaging artifact is declared without an explicit one.
+firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+google-services = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 
