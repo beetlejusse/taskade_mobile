@@ -2,10 +2,10 @@
 <!-- Bottom-sheet surface: rounded top corners, flat bottom. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="@color/cream_surface" />
+    <solid android:color="@color/surface" />
     <corners
-        android:topLeftRadius="24dp"
-        android:topRightRadius="24dp"
+        android:topLeftRadius="28dp"
+        android:topRightRadius="28dp"
         android:bottomLeftRadius="0dp"
         android:bottomRightRadius="0dp" />
 </shape>

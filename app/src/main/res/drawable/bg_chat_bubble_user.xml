@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- User (right) message bubble: primary fill, tail on top-right. -->
+<!-- User (right) message bubble: violet accent gradient, tail on top-right. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <solid android:color="@color/bubble_user" />
+    <gradient
+        android:angle="225"
+        android:startColor="@color/primary_bright"
+        android:endColor="@color/primary"
+        android:type="linear" />
     <corners
-        android:topLeftRadius="20dp"
+        android:topLeftRadius="22dp"
         android:topRightRadius="6dp"
-        android:bottomRightRadius="20dp"
-        android:bottomLeftRadius="20dp" />
+        android:bottomRightRadius="22dp"
+        android:bottomLeftRadius="22dp" />
 </shape>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- DIVYA (left) message bubble: light surface, soft border, tail on top-left. -->
+<!-- DIVYA (left) message bubble: white surface, hairline border, tail on top-left. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <solid android:color="@color/bubble_agent" />
@@ -8,7 +8,7 @@
         android:color="@color/outline" />
     <corners
         android:topLeftRadius="6dp"
-        android:topRightRadius="20dp"
-        android:bottomRightRadius="20dp"
-        android:bottomLeftRadius="20dp" />
+        android:topRightRadius="22dp"
+        android:bottomRightRadius="22dp"
+        android:bottomLeftRadius="22dp" />
 </shape>

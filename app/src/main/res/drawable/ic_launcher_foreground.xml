@@ -1,30 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  TASKADE adaptive-icon foreground: microphone + voice waveform.
+  Authored in a 512-space mark (bbox center 276,257.5) and scaled 0.2x into the
+  108 canvas so all key art stays inside the adaptive-icon safe zone.
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
-        <aapt:attr name="android:fillColor">
-            <gradient
-                android:endX="85.84757"
-                android:endY="92.4963"
-                android:startX="42.9492"
-                android:startY="49.59793"
-                android:type="linear">
-                <item
-                    android:color="#44000000"
-                    android:offset="0.0" />
-                <item
-                    android:color="#00000000"
-                    android:offset="1.0" />
-            </gradient>
-        </aapt:attr>
-    </path>
-    <path
-        android:fillColor="#FFFFFF"
-        android:fillType="nonZero"
-        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
-        android:strokeWidth="1"
-        android:strokeColor="#00000000" />
+    <group
+        android:scaleX="0.2" android:scaleY="0.2"
+        android:translateX="-1.2" android:translateY="2.5">
+
+        <!-- Microphone body -->
+        <path
+            android:fillColor="#FBF5EA"
+            android:pathData="M194,158 A44,44 0 0 1 238,202 L238,256 A44,44 0 0 1 194,300 A44,44 0 0 1 150,256 L150,202 A44,44 0 0 1 194,158 Z" />
+        <!-- Mic stand (U arc) -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FBF5EA"
+            android:strokeWidth="22"
+            android:strokeLineCap="round"
+            android:pathData="M118,262 A76,76 0 0 0 270,262" />
+        <!-- Mic stem -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FBF5EA"
+            android:strokeWidth="22"
+            android:strokeLineCap="round"
+            android:pathData="M194,338 L194,374" />
+        <!-- Mic base -->
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FBF5EA"
+            android:strokeWidth="22"
+            android:strokeLineCap="round"
+            android:pathData="M154,374 L234,374" />
+
+        <!-- Voice waveform (5 bars, single path, amber gradient) -->
+        <path android:pathData="M305,197 A9,9 0 0 1 314,206 L314,252 A9,9 0 0 1 305,261 A9,9 0 0 1 296,252 L296,206 A9,9 0 0 1 305,197 Z M335,165 A9,9 0 0 1 344,174 L344,284 A9,9 0 0 1 335,293 A9,9 0 0 1 326,284 L326,174 A9,9 0 0 1 335,165 Z M365,141 A9,9 0 0 1 374,150 L374,308 A9,9 0 0 1 365,317 A9,9 0 0 1 356,308 L356,150 A9,9 0 0 1 365,141 Z M395,169 A9,9 0 0 1 404,178 L404,280 A9,9 0 0 1 395,289 A9,9 0 0 1 386,280 L386,178 A9,9 0 0 1 395,169 Z M425,199 A9,9 0 0 1 434,208 L434,250 A9,9 0 0 1 425,259 A9,9 0 0 1 416,250 L416,208 A9,9 0 0 1 425,199 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:type="linear"
+                    android:startX="365" android:startY="141"
+                    android:endX="365" android:endY="319">
+                    <item android:offset="0" android:color="#FFE8B45C" />
+                    <item android:offset="1" android:color="#FFC8862F" />
+                </gradient>
+            </aapt:attr>
+        </path>
+    </group>
 </vector>

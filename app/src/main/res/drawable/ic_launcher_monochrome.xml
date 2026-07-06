@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  TASKADE adaptive-icon monochrome layer (Android 13+ themed icons).
+  Same mic + waveform silhouette in a single flat color; the system recolors it.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="0.2" android:scaleY="0.2"
+        android:translateX="-1.2" android:translateY="2.5">
+
+        <path
+            android:fillColor="#FF000000"
+            android:pathData="M194,158 A44,44 0 0 1 238,202 L238,256 A44,44 0 0 1 194,300 A44,44 0 0 1 150,256 L150,202 A44,44 0 0 1 194,158 Z" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF000000"
+            android:strokeWidth="22"
+            android:strokeLineCap="round"
+            android:pathData="M118,262 A76,76 0 0 0 270,262" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF000000"
+            android:strokeWidth="22"
+            android:strokeLineCap="round"
+            android:pathData="M194,338 L194,374" />
+        <path
+            android:fillColor="#00000000"
+            android:strokeColor="#FF000000"
+            android:strokeWidth="22"
+            android:strokeLineCap="round"
+            android:pathData="M154,374 L234,374" />
+        <path
+            android:fillColor="#FF000000"
+            android:pathData="M305,197 A9,9 0 0 1 314,206 L314,252 A9,9 0 0 1 305,261 A9,9 0 0 1 296,252 L296,206 A9,9 0 0 1 305,197 Z M335,165 A9,9 0 0 1 344,174 L344,284 A9,9 0 0 1 335,293 A9,9 0 0 1 326,284 L326,174 A9,9 0 0 1 335,165 Z M365,141 A9,9 0 0 1 374,150 L374,308 A9,9 0 0 1 365,317 A9,9 0 0 1 356,308 L356,150 A9,9 0 0 1 365,141 Z M395,169 A9,9 0 0 1 404,178 L404,280 A9,9 0 0 1 395,289 A9,9 0 0 1 386,280 L386,178 A9,9 0 0 1 395,169 Z M425,199 A9,9 0 0 1 434,208 L434,250 A9,9 0 0 1 425,259 A9,9 0 0 1 416,250 L416,208 A9,9 0 0 1 425,199 Z" />
+    </group>
+</vector>
