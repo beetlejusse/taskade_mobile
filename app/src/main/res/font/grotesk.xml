@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Space Grotesk — the display family used for the brand mark, screen titles and
+  other large "hero" text. Its geometric, slightly techy character gives the
+  assistant its visual identity; body text stays on @font/jakarta.
+-->
+<font-family xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <font
+        android:font="@font/grotesk_medium"
+        android:fontStyle="normal"
+        android:fontWeight="500"
+        app:font="@font/grotesk_medium"
+        app:fontStyle="normal"
+        app:fontWeight="500" />
+
+    <font
+        android:font="@font/grotesk_semibold"
+        android:fontStyle="normal"
+        android:fontWeight="600"
+        app:font="@font/grotesk_semibold"
+        app:fontStyle="normal"
+        app:fontWeight="600" />
+
+    <font
+        android:font="@font/grotesk_bold"
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        app:font="@font/grotesk_bold"
+        app:fontStyle="normal"
+        app:fontWeight="700" />
+</font-family>
