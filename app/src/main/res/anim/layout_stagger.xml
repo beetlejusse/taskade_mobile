@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Staggered cascade for RecyclerView content: each visible item plays
+  item_fall_up slightly after the previous one (Todoist/Things-style list
+  entrance). Applied on first layout and re-scheduled on view-mode toggles.
+-->
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+    android:animation="@anim/item_fall_up"
+    android:animationOrder="normal"
+    android:delay="8%" />

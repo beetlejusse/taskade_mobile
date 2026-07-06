@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Incoming half of the Material "fade through" screen transition used between
+  peer screens (Chat <-> Tasks, list -> detail): the new screen fades in with a
+  slight scale-up after the old one has mostly faded out.
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <alpha
+        android:duration="240"
+        android:fromAlpha="0"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        android:startOffset="60"
+        android:toAlpha="1" />
+    <scale
+        android:duration="240"
+        android:fromXScale="0.97"
+        android:fromYScale="0.97"
+        android:interpolator="@android:anim/decelerate_interpolator"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:startOffset="60"
+        android:toXScale="1"
+        android:toYScale="1" />
+</set>
