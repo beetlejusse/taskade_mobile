@@ -2,6 +2,7 @@ package com.app.taskade_mobile.voice
 
 import android.util.Log
 import com.app.taskade_mobile.core.ApiConfig
+import com.app.taskade_mobile.core.BackendHostManager
 import com.app.taskade_mobile.core.SessionTokenProvider
 import com.app.taskade_mobile.voice.protocol.ClientMessage
 import com.app.taskade_mobile.voice.protocol.ServerEvent
@@ -42,7 +43,8 @@ import kotlin.coroutines.resume
 class VoiceSocketClient(
     private val httpClient: OkHttpClient,
     private val json: Json,
-    private val tokenProvider: SessionTokenProvider
+    private val tokenProvider: SessionTokenProvider,
+    private val hostManager: BackendHostManager
 ) {
     enum class ConnectionState { Disconnected, Connecting, Connected }
 
@@ -83,18 +85,28 @@ class VoiceSocketClient(
     private suspend fun connectLoop() {
         var attempt = 0
         while (running) {
+            val host = hostManager.activeHost()
             try {
                 val token = tokenProvider.freshIdToken()
                 val request = Request.Builder()
-                    .url(ApiConfig.voiceSocketUrl(token))
+                    .url(ApiConfig.voiceSocketUrl(host.wsVoice, token))
                     .build()
                 _connection.value = ConnectionState.Connecting
                 val everOpened = runSocket(request)
-                attempt = if (everOpened) 0 else attempt + 1
+                if (everOpened) {
+                    hostManager.markHealthy(host)
+                    attempt = 0
+                } else {
+                    // Never connected → sideline this host so the next attempt tries
+                    // the other one (shares state with the REST failover).
+                    hostManager.markDown(host)
+                    attempt += 1
+                }
             } catch (e: CancellationException) {
                 throw e
             } catch (e: Exception) {
-                Log.w(TAG, "Voice socket attempt failed", e)
+                hostManager.markDown(host)
+                Log.w(TAG, "Voice socket attempt failed on '${host.name}'", e)
                 _events.tryEmit(ServerEvent.Error(e.message ?: "connection failed"))
                 attempt++
             }

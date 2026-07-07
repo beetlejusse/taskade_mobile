@@ -305,10 +305,16 @@ class VoiceSessionManager private constructor(
         fun create(context: Context): VoiceSessionManager {
             val app = context.applicationContext
             ServiceLocator.init(app)
+            // Short connect timeout so an unreachable host is caught fast and the
+            // socket can fail over; the read timeout stays 0 (long-lived socket).
+            val wsClient = ServiceLocator.apiProvider.httpClient.newBuilder()
+                .connectTimeout(3, java.util.concurrent.TimeUnit.SECONDS)
+                .build()
             val socket = VoiceSocketClient(
-                httpClient = ServiceLocator.apiProvider.httpClient,
+                httpClient = wsClient,
                 json = ServiceLocator.apiProvider.json,
-                tokenProvider = ServiceLocator.tokenProvider
+                tokenProvider = ServiceLocator.tokenProvider,
+                hostManager = ServiceLocator.backendHostManager
             )
             val vad = VadDetector(VadModel.Factory.create(app))
             return VoiceSessionManager(app, socket, vad)
