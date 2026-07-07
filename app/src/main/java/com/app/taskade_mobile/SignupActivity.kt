@@ -6,12 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.app.taskade_mobile.auth.AuthManager
 import com.app.taskade_mobile.auth.AuthValidators
+import com.app.taskade_mobile.core.enableSeamlessEdgeToEdge
 import com.app.taskade_mobile.ui.AuthAnimations
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
@@ -39,7 +39,7 @@ class SignupActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableSeamlessEdgeToEdge()
         setContentView(R.layout.activity_signup)
         applyWindowInsets()
 
