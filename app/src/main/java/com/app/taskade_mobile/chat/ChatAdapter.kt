@@ -13,10 +13,12 @@ import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.view.animation.DecelerateInterpolator
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.app.taskade_mobile.R
+import com.app.taskade_mobile.ui.Motion
 import com.app.taskade_mobile.voice.protocol.MetadataLink
 import com.app.taskade_mobile.voice.protocol.MetadataTask
 import java.text.SimpleDateFormat
@@ -33,6 +35,11 @@ class ChatAdapter(
 
     private var userAvatar: Bitmap? = null
 
+    // Entrance guard: only positions beyond this pop in. Streamed text updates
+    // (notifyItemChanged) rebind the SAME position, so a bubble animates exactly
+    // once — when it first appears — and never re-pops mid-stream.
+    private var lastAnimatedPosition = -1
+
     init {
         setHasStableIds(true)
     }
@@ -40,6 +47,11 @@ class ChatAdapter(
     fun setUserAvatar(bitmap: Bitmap) {
         userAvatar = bitmap
         notifyItemRangeChanged(0, itemCount)
+    }
+
+    /** Call when the conversation is cleared so fresh messages animate again. */
+    fun resetEntranceState() {
+        lastAnimatedPosition = -1
     }
 
     override fun getItemId(position: Int): Long = items[position].id
@@ -68,6 +80,30 @@ class ChatAdapter(
             is ChatMessage -> (holder as MessageViewHolder).bind(item, userAvatar)
             is MetadataItem -> (holder as MetadataViewHolder).bind(item)
         }
+        if (position > lastAnimatedPosition) {
+            lastAnimatedPosition = position
+            popIn(holder.itemView)
+        } else {
+            // Recycled views can carry transient values from an interrupted entrance.
+            Motion.resetTransforms(holder.itemView)
+        }
+    }
+
+    /** WhatsApp/iMessage-style arrival: the new bubble lifts in with a soft pop. */
+    private fun popIn(view: View) {
+        view.animate().cancel()
+        view.alpha = 0f
+        view.translationY = 16f * view.resources.displayMetrics.density
+        view.scaleX = 0.96f
+        view.scaleY = 0.96f
+        view.animate()
+            .alpha(1f)
+            .translationY(0f)
+            .scaleX(1f)
+            .scaleY(1f)
+            .setDuration(280)
+            .setInterpolator(DecelerateInterpolator(1.5f))
+            .start()
     }
 
     override fun getItemCount(): Int = items.size
@@ -117,7 +153,7 @@ class ChatAdapter(
     /** Populates the details card; the number of tasks/links varies, so build it live. */
     class MetadataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val container: LinearLayout = itemView.findViewById(R.id.metaContainer)
-        private val font = ResourcesCompat.getFont(itemView.context, R.font.montserrat)
+        private val font = ResourcesCompat.getFont(itemView.context, R.font.jakarta)
         private val density = itemView.resources.displayMetrics.density
 
         fun bind(item: MetadataItem) {
