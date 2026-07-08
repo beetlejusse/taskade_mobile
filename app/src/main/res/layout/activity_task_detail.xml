@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detailRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/canvas"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".TaskDetailActivity">
+
+    <!-- ===== Header ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="22dp"
+        android:paddingBottom="10dp">
+
+        <ImageButton
+            android:id="@+id/detailBack"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/task_detail_back"
+            android:padding="10dp"
+            android:rotation="180"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="@color/ink" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/grotesk_bold"
+            android:letterSpacing="-0.01"
+            android:text="@string/task_detail_title"
+            android:textColor="@color/ink"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingHorizontal="18dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="18dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/detailContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/detailTaskTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="4dp"
+                android:fontFamily="@font/grotesk_bold"
+                android:letterSpacing="-0.02"
+                android:lineSpacingMultiplier="1.08"
+                android:textColor="@color/ink"
+                android:textSize="27sp"
+                tools:text="Design review" />
+
+            <!-- ===== Overview card: label / value pairs ===== -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="18dp">
+
+                    <!-- Status -->
+                    <TextView style="@style/Widget.Taskade.DetailLabel" android:text="@string/task_detail_status" />
+                    <TextView android:id="@+id/detailStatus" style="@style/Widget.Taskade.DetailValue" tools:text="In progress" />
+
+                    <!-- Priority -->
+                    <TextView
+                        style="@style/Widget.Taskade.DetailLabel"
+                        android:layout_marginTop="18dp"
+                        android:text="@string/task_detail_priority" />
+                    <TextView android:id="@+id/detailPriority" style="@style/Widget.Taskade.DetailValue" tools:text="High" />
+
+                    <!-- Due -->
+                    <TextView
+                        style="@style/Widget.Taskade.DetailLabel"
+                        android:layout_marginTop="18dp"
+                        android:text="@string/task_detail_due" />
+                    <TextView android:id="@+id/detailDue" style="@style/Widget.Taskade.DetailValue" tools:text="Jun 24, 2026" />
+
+                    <!-- Created -->
+                    <TextView
+                        style="@style/Widget.Taskade.DetailLabel"
+                        android:layout_marginTop="18dp"
+                        android:text="@string/task_detail_created" />
+                    <TextView android:id="@+id/detailCreated" style="@style/Widget.Taskade.DetailValue" tools:text="Jun 18, 2026" />
+
+                    <!-- Type -->
+                    <TextView
+                        style="@style/Widget.Taskade.DetailLabel"
+                        android:layout_marginTop="18dp"
+                        android:text="@string/task_detail_type" />
+                    <TextView android:id="@+id/detailType" style="@style/Widget.Taskade.DetailValue" tools:text="Single step" />
+
+                    <!-- Part of (parent) -->
+                    <TextView
+                        android:id="@+id/detailParentLabel"
+                        style="@style/Widget.Taskade.DetailLabel"
+                        android:layout_marginTop="18dp"
+                        android:text="@string/task_detail_parent" />
+                    <TextView android:id="@+id/detailParent" style="@style/Widget.Taskade.DetailValue" tools:text="JLPT N5 prep" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ===== Description card ===== -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                app:cardBackgroundColor="@color/surface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="1dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="18dp">
+
+                    <TextView style="@style/Widget.Taskade.DetailLabel" android:text="@string/task_detail_description" />
+                    <TextView
+                        android:id="@+id/detailDescription"
+                        style="@style/Widget.Taskade.DetailValue"
+                        android:lineSpacingMultiplier="1.3"
+                        tools:text="Finalize the DIVYA chat UI polish" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/detailDeleteButton"
+        style="@style/Widget.Taskade.Button.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="22dp"
+        android:layout_marginBottom="18dp"
+        android:text="@string/task_delete"
+        android:textColor="@color/danger"
+        app:backgroundTint="@color/danger_soft"
+        app:icon="@drawable/ic_delete"
+        app:iconGravity="textStart"
+        app:iconTint="@color/danger"
+        app:rippleColor="@color/danger" />
+
+</LinearLayout>

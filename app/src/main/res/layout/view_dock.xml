@@ -104,6 +104,34 @@
         </com.app.taskade_mobile.ui.PillBlurView>
     </LinearLayout>
 
+    <!--
+      ===== Voice "sonar" pulse rings (behind the orb) =====
+      Two concentric rings that expand + fade while the assistant is listening /
+      capturing speech, driven by DockView.setVoiceState(). Lower elevation than
+      the orb (12dp) so they radiate from underneath it. Invisible at rest.
+    -->
+    <View
+        android:id="@+id/dockOrbPulse1"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/orb_pulse_ring"
+        android:elevation="10dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        tools:ignore="UseAppTint" />
+
+    <View
+        android:id="@+id/dockOrbPulse2"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@drawable/orb_pulse_ring"
+        android:elevation="10dp"
+        android:alpha="0"
+        android:visibility="invisible"
+        tools:ignore="UseAppTint" />
+
     <!-- ===== Detached voice orb, centered on the pill row ===== -->
     <ImageButton
         android:id="@+id/dockButtonVoice"
@@ -118,44 +146,5 @@
         android:src="@drawable/ic_waveform"
         android:tint="@color/on_primary"
         tools:ignore="UseAppTint" />
-
-    <!-- ===== Keyboard / voice toggle chip, floating above the orb ===== -->
-    <eightbitlab.com.blurview.BlurView
-        android:id="@+id/dockKeyboardChip"
-        android:layout_width="wrap_content"
-        android:layout_height="34dp"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="80dp"
-        android:elevation="6dp"
-        android:foreground="@drawable/dock_glass_rim">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingHorizontal="14dp">
-
-            <ImageView
-                android:id="@+id/dockChipIcon"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:contentDescription="@string/dock_keyboard_toggle"
-                android:src="@drawable/ic_keyboard"
-                app:tint="@color/ink"
-                xmlns:app="http://schemas.android.com/apk/res-auto" />
-
-            <TextView
-                android:id="@+id/dockChipLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:fontFamily="@font/montserrat"
-                android:text="@string/dock_chip_type"
-                android:textColor="@color/ink"
-                android:textFontWeight="600"
-                android:textSize="12sp" />
-        </LinearLayout>
-    </eightbitlab.com.blurview.BlurView>
 
 </merge>

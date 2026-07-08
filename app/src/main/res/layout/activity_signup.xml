@@ -5,38 +5,36 @@
     android:id="@+id/signupRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige_background"
+    android:background="@color/canvas"
     tools:context=".SignupActivity">
 
-    <!-- ===== App top part: brand mark over the beige canvas ===== -->
+    <!-- ===== App top part: brand mark over the canvas ===== -->
     <LinearLayout
         android:id="@+id/brandArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="56dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:letterSpacing="0.22"
+            android:fontFamily="@font/grotesk_bold"
+            android:letterSpacing="0.14"
             android:text="@string/brand_name"
             android:textColor="@color/ink"
-            android:textFontWeight="700"
-            android:textSize="30sp" />
+            android:textSize="26sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/montserrat"
-            android:letterSpacing="0.04"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/jakarta_medium"
+            android:letterSpacing="0.02"
             android:text="@string/brand_tagline"
             android:textColor="@color/muted"
-            android:textFontWeight="500"
             android:textSize="14sp" />
     </LinearLayout>
 

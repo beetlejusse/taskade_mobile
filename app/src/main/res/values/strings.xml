@@ -2,6 +2,12 @@
     <string name="app_name">TASKADE</string>
 
     <!-- Auth0 configuration -->
+    <!--
+      MUST match the backend's tenant (taskade_backend/.env AUTH0_DOMAIN /
+      AUTH0_CLIENT_ID) and the web client (client/.env) so the backend can verify
+      the app's ID token (same tenant JWKS) and so the same Google account maps to
+      the same `sub` / data across web + mobile.
+    -->
     <string name="com_auth0_domain">dev-ave77eatudglccjz.us.auth0.com</string>
     <string name="com_auth0_client_id">h4a7gISwYGPLWyCy82kD7OvcCVDJ4yPF</string>
     <!--
@@ -56,9 +62,26 @@
     <!-- Chat screen (DIVYA) -->
     <string name="agent_name">DIVYA</string>
     <string name="agent_status">Online</string>
+
+    <!-- Live voice session states (shown in the header status line). -->
+    <string name="voice_status_offline">Offline</string>
+    <string name="voice_status_connecting">Connecting…</string>
+    <string name="voice_status_listening">Listening…</string>
+    <string name="voice_status_recording">Recording…</string>
+    <string name="voice_status_thinking">Thinking…</string>
+    <string name="voice_status_speaking">Speaking…</string>
+    <string name="voice_status_tool">Running %1$s…</string>
+    <string name="voice_permission_required">Microphone permission is needed for voice.</string>
+    <!-- Shown when the mic permission is permanently denied (Android suppresses the
+         system dialog after two denials, so we must route the user to settings). -->
+    <string name="voice_permission_denied_title">Microphone access needed</string>
+    <string name="voice_permission_denied_message">Voice chat with DIVYA needs the microphone, but its permission is turned off for this app. Please enable it:\n\nSettings → Permissions → Microphone → Allow</string>
+    <string name="voice_permission_open_settings">Open settings</string>
+    <string name="voice_error">Voice error: %1$s</string>
+    <string name="voice_notification_channel">Voice assistant</string>
+    <string name="voice_notification_title">DIVYA is listening</string>
+    <string name="voice_notification_text">Tap to return to the conversation.</string>
     <string name="user_avatar">Your avatar</string>
-    <string name="composer_hint">Message DIVYA…</string>
-    <string name="composer_send">Send message</string>
 
     <!-- Dock component -->
     <string name="dock_tasks">Tasks</string>
@@ -66,9 +89,6 @@
     <string name="dock_calendar">Calendar</string>
     <string name="dock_profile">Profile</string>
     <string name="dock_voice">Voice input</string>
-    <string name="dock_keyboard_toggle">Toggle keyboard input</string>
-    <string name="dock_chip_type">Type</string>
-    <string name="dock_chip_voice">Speak</string>
     <string name="coming_soon">Coming soon</string>
 
     <!-- Settings screen -->
@@ -116,6 +136,8 @@
 
     <!-- About sheet -->
     <string name="settings_version">DIVYA · Version 1.0</string>
+    <string name="settings_version_fmt">DIVYA · Version %1$s</string>
+    <string name="settings_no_email_app">No email app found</string>
     <string name="settings_changelog">Changelog</string>
     <string name="settings_support">Support</string>
     <string name="settings_feedback">Send feedback</string>
@@ -126,11 +148,42 @@
     <!-- Tasks screen -->
     <string name="tasks_title">Tasks</string>
     <string name="tasks_subtitle">This screen is coming soon.</string>
-    <string name="tasks_greeting">greetings,</string>
+    <string name="tasks_greeting">Welcome back,</string>
     <!-- Placeholder until the signed-in user's name is fetched dynamically. -->
     <string name="tasks_user_placeholder">Vishal</string>
     <string name="tasks_toggle_view">Switch between grid and list view</string>
     <string name="tasks_due">Due date</string>
+    <!-- Header line under the user's name; hidden until the first load resolves. -->
+    <plurals name="tasks_count">
+        <item quantity="one">%d open task</item>
+        <item quantity="other">%d open tasks</item>
+    </plurals>
+    <string name="tasks_count_empty">All clear — nothing pending</string>
+    <!-- Empty state shown when the task list has loaded and is empty. -->
+    <string name="tasks_empty_title">No tasks yet</string>
+    <string name="tasks_empty_subtitle">Ask DIVYA to plan your day —\ntry \"remind me to…\"</string>
+
+    <!-- Task delete + detail -->
+    <string name="task_delete">Delete task</string>
+    <string name="task_deleted">Task deleted</string>
+    <string name="task_delete_failed">Couldn\'t delete the task. Please try again.</string>
+    <string name="task_delete_confirm_title">Delete task?</string>
+    <string name="task_delete_confirm_message">This permanently deletes the task and any sub-tasks. This can\'t be undone.</string>
+    <string name="task_detail_title">Task details</string>
+    <string name="task_detail_description">Description</string>
+    <string name="task_detail_status">Status</string>
+    <string name="task_detail_priority">Priority</string>
+    <string name="task_detail_due">Due</string>
+    <string name="task_detail_created">Created</string>
+    <string name="task_detail_type">Type</string>
+    <string name="task_detail_parent">Part of</string>
+    <string name="task_detail_back">Back</string>
+    <string name="task_detail_none">—</string>
+    <string name="priority_high">High</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_low">Low</string>
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
 
     <!-- Home screen -->
     <string name="home_welcome_placeholder">Loading…</string>
@@ -139,4 +192,29 @@
     <string name="logout_button">Log out</string>
     <string name="logout_failed">Logout failed: %1$s</string>
     <string name="profile_failed">Could not load profile: %1$s</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_kicker">Quick setup</string>
+    <string name="onboarding_answer_hint">Your answer</string>
+    <string name="onboarding_speak">Tap to speak</string>
+    <string name="onboarding_continue">Continue</string>
+    <string name="onboarding_not_now">Not now</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_name_prompt">What should I call you?</string>
+    <string name="onboarding_name_hint">You can speak or type it — this is how I\'ll address you.</string>
+    <string name="onboarding_name_spoken">Hi, I\'m Divya. What should I call you?</string>
+    <string name="onboarding_name_required">Please tell me what to call you.</string>
+    <string name="onboarding_location_prompt">Can I use your location?</string>
+    <string name="onboarding_location_hint">It lets me tailor reminders and searches to where you are. You can always change this later.</string>
+    <string name="onboarding_location_spoken">Can I use your location to give you locally relevant reminders and searches?</string>
+    <string name="onboarding_location_allow">Allow location</string>
+    <string name="onboarding_checkin_prompt">When should I check in?</string>
+    <string name="onboarding_checkin_hint">Say a time like \"7 am\", or type an hour from 0 to 23.</string>
+    <string name="onboarding_checkin_spoken">What time each morning should I check in with you?</string>
+    <string name="onboarding_checkin_field_hint">e.g. 7 am</string>
+    <string name="onboarding_saving">Setting things up…</string>
+    <string name="onboarding_done_spoken">All set, %1$s! Let\'s get started.</string>
+    <string name="onboarding_save_failed">Couldn\'t save that — please try again.</string>
+    <string name="onboarding_mic_unavailable">Voice input isn\'t available — please type instead.</string>
+    <string name="onboarding_listening">Listening…</string>
 </resources>

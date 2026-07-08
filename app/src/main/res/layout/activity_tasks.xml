@@ -5,7 +5,7 @@
     android:id="@+id/tasksRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige_background"
+    android:background="@color/canvas"
     tools:context=".TasksActivity">
 
     <!-- Content the dock blurs as it scrolls beneath the frosted pill. -->
@@ -21,18 +21,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/beige_background">
+            android:background="@color/canvas">
 
             <!-- ===== Fixed header: greeting + view toggle ===== -->
             <LinearLayout
                 android:id="@+id/tasksHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@color/beige_background"
+                android:background="@color/canvas"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="22dp"
-                android:paddingTop="18dp"
+                android:paddingTop="20dp"
                 android:paddingEnd="22dp"
                 android:paddingBottom="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -48,22 +48,34 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
+                        android:fontFamily="@font/jakarta_medium"
                         android:text="@string/tasks_greeting"
                         android:textColor="@color/muted"
-                        android:textFontWeight="500"
                         android:textSize="15sp" />
 
                     <TextView
                         android:id="@+id/tasksUserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:letterSpacing="0.01"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/grotesk_bold"
+                        android:letterSpacing="-0.02"
                         android:textColor="@color/ink"
-                        android:textFontWeight="700"
-                        android:textSize="28sp"
+                        android:textSize="30sp"
                         tools:text="Vishal" />
+
+                    <!-- Live open-task count; invisible until the first load resolves. -->
+                    <TextView
+                        android:id="@+id/tasksCountLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:alpha="0"
+                        android:fontFamily="@font/jakarta_medium"
+                        android:textColor="@color/muted"
+                        android:textSize="13sp"
+                        tools:alpha="1"
+                        tools:text="4 open tasks" />
                 </LinearLayout>
 
                 <ImageButton
@@ -72,10 +84,11 @@
                     android:layout_height="46dp"
                     android:background="@drawable/bg_toggle_button"
                     android:contentDescription="@string/tasks_toggle_view"
+                    android:elevation="1dp"
                     android:padding="11dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_list_view"
-                    app:tint="@color/ink" />
+                    app:tint="@color/primary" />
             </LinearLayout>
 
             <!-- ===== Scrollable task listing (grid / list) ===== -->
@@ -84,6 +97,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:clipToPadding="false"
+                android:layoutAnimation="@anim/layout_stagger"
                 android:paddingHorizontal="15dp"
                 android:paddingTop="6dp"
                 android:scrollbars="none"
@@ -92,15 +106,62 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tasksHeader"
                 tools:listitem="@layout/item_task_grid" />
+
+            <!-- ===== Empty state: shown only after the first load resolves empty ===== -->
+            <LinearLayout
+                android:id="@+id/tasksEmptyState"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="40dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tasksHeader"
+                app:layout_constraintVertical_bias="0.42"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:layout_width="84dp"
+                    android:layout_height="84dp"
+                    android:background="@drawable/bg_empty_icon"
+                    android:contentDescription="@string/tasks_empty_title"
+                    android:padding="24dp"
+                    android:src="@drawable/ic_tasks"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/grotesk_bold"
+                    android:letterSpacing="-0.01"
+                    android:text="@string/tasks_empty_title"
+                    android:textColor="@color/ink"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/jakarta_medium"
+                    android:gravity="center"
+                    android:lineSpacingMultiplier="1.25"
+                    android:text="@string/tasks_empty_subtitle"
+                    android:textColor="@color/muted"
+                    android:textSize="14sp" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </eightbitlab.com.blurview.BlurTarget>
 
-    <!-- ===== Persistent glassmorphism dock (highest z-index) ===== -->
-    <com.app.taskade_mobile.ui.DockView
+    <!-- ===== Persistent glassmorphism nav dock — no orb (highest z-index) ===== -->
+    <com.app.taskade_mobile.ui.GlassNavDockView
         android:id="@+id/dock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -5,7 +5,9 @@
     android:id="@+id/chatRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige_background"
+    android:background="@color/canvas"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".ChatActivity">
 
     <!--
@@ -24,54 +26,62 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/beige_background">
+            android:background="@color/canvas">
 
-            <!-- ===== Fixed header ===== -->
+            <!-- ===== Fixed header: agent name + live status ===== -->
             <LinearLayout
                 android:id="@+id/chatHeader"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@color/beige_background"
-                android:orientation="vertical"
+                android:background="@color/canvas"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
                 android:paddingStart="22dp"
-                android:paddingTop="18dp"
-                android:paddingEnd="22dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="20dp"
                 android:paddingBottom="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:letterSpacing="0.06"
-                    android:text="@string/agent_name"
-                    android:textColor="@color/ink"
-                    android:textFontWeight="700"
-                    android:textSize="30sp" />
-
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-
-                    <View
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:background="@drawable/bg_online_dot" />
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="7dp"
-                        android:fontFamily="@font/montserrat"
-                        android:text="@string/agent_status"
-                        android:textColor="@color/muted"
-                        android:textFontWeight="500"
-                        android:textSize="13sp" />
+                        android:fontFamily="@font/grotesk_bold"
+                        android:letterSpacing="0.04"
+                        android:text="@string/agent_name"
+                        android:textColor="@color/ink"
+                        android:textSize="24sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:id="@+id/onlineDot"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:background="@drawable/bg_online_dot" />
+
+                        <TextView
+                            android:id="@+id/agentStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="7dp"
+                            android:fontFamily="@font/jakarta_medium"
+                            android:text="@string/agent_status"
+                            android:textColor="@color/muted"
+                            android:textSize="13sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
@@ -79,7 +89,7 @@
                 android:id="@+id/headerDivider"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:alpha="0.6"
+                android:alpha="0.7"
                 android:background="@color/outline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -101,61 +111,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </eightbitlab.com.blurview.BlurTarget>
 
-    <!-- ===== Text composer (revealed by the center dock button) ===== -->
-    <LinearLayout
-        android:id="@+id/composerBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="14dp"
-        android:background="@drawable/bg_composer"
-        android:elevation="10dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingStart="20dp"
-        android:paddingEnd="6dp"
-        android:paddingVertical="6dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/dock"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible">
-
-        <EditText
-            android:id="@+id/composerInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@null"
-            android:fontFamily="@font/montserrat"
-            android:hint="@string/composer_hint"
-            android:importantForAutofill="no"
-            android:inputType="textCapSentences|textMultiLine"
-            android:maxLines="4"
-            android:minHeight="44dp"
-            android:textColor="@color/ink"
-            android:textColorHint="@color/muted"
-            android:textSize="15sp" />
-
-        <ImageButton
-            android:id="@+id/composerSend"
-            android:layout_width="44dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="6dp"
-            android:background="@drawable/bg_send_button"
-            android:contentDescription="@string/composer_send"
-            android:padding="11dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_send"
-            android:tint="@color/on_primary" />
-    </LinearLayout>
-
     <!-- ===== Persistent glassmorphism dock ===== -->
     <com.app.taskade_mobile.ui.DockView
         android:id="@+id/dock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

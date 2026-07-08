@@ -5,7 +5,7 @@
     android:id="@+id/settingsRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beige_background"
+    android:background="@color/canvas"
     tools:context=".SettingsActivity">
 
     <!-- Content the dock blurs as it scrolls beneath the frosted pills. -->
@@ -22,7 +22,7 @@
             android:id="@+id/settingsScroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/beige_background"
+            android:background="@color/canvas"
             android:clipToPadding="false"
             android:scrollbars="none">
 
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:paddingHorizontal="16dp"
-                android:paddingTop="24dp">
+                android:paddingTop="28dp">
 
                 <!-- ===== Avatar header ===== -->
                 <com.google.android.material.imageview.ShapeableImageView
@@ -47,8 +47,8 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_avatar_placeholder"
                     app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Circle"
-                    app:strokeColor="@color/outline"
-                    app:strokeWidth="2dp" />
+                    app:strokeColor="@color/primary_soft"
+                    app:strokeWidth="3dp" />
 
                 <TextView
                     android:id="@+id/settingsName"
@@ -56,11 +56,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/grotesk_bold"
+                    android:letterSpacing="-0.01"
                     android:text="@string/settings_user_name"
                     android:textColor="@color/ink"
-                    android:textFontWeight="700"
-                    android:textSize="22sp" />
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/settingsEmail"
@@ -69,10 +69,9 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="28dp"
-                    android:fontFamily="@font/montserrat"
+                    android:fontFamily="@font/jakarta_medium"
                     android:text="@string/settings_user_email"
                     android:textColor="@color/muted"
-                    android:textFontWeight="500"
                     android:textSize="13sp" />
 
                 <!-- ===== Settings rows ===== -->
@@ -134,13 +133,13 @@
         </androidx.core.widget.NestedScrollView>
     </eightbitlab.com.blurview.BlurTarget>
 
-    <!-- ===== Persistent glassmorphism dock (highest z-index) ===== -->
-    <com.app.taskade_mobile.ui.DockView
+    <!-- Declared after the BlurTarget so it draws on top; no extra elevation —
+         parent Z inflates the pill's shadow into a smear across the canvas. -->
+    <com.app.taskade_mobile.ui.GlassNavDockView
         android:id="@+id/dock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:elevation="24dp"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

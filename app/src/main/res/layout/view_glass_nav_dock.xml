@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Standalone glassmorphism navigation dock: a single frosted stadium pill holding
+  the four nav destinations, evenly spaced. Unlike view_dock, there is NO voice orb
+  and NO concave notch — GlassNavDockView calls PillBlurView.setStadium() so the
+  pill renders as a clean, continuous glass bar. Blur is wired at runtime.
+-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- No elevation on purpose: the chat dock's pills cast no shadow either — the
+         glass reads as floating through blur + stroke, and any elevation smears
+         dark corners onto the canvas below. -->
+    <com.app.taskade_mobile.ui.PillBlurView
+        android:id="@+id/glassNavPill"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:layout_gravity="bottom|center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <ImageButton
+                android:id="@+id/dockButtonTasks"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_nav_squircle"
+                android:contentDescription="@string/dock_tasks"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_tasks"
+                android:tint="@color/muted"
+                tools:ignore="UseAppTint" />
+
+            <ImageButton
+                android:id="@+id/dockButtonChat"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="22dp"
+                android:background="@drawable/bg_nav_squircle"
+                android:contentDescription="@string/dock_chat"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_chat"
+                android:tint="@color/muted"
+                tools:ignore="UseAppTint" />
+
+            <ImageButton
+                android:id="@+id/dockButtonCalendar"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="22dp"
+                android:background="@drawable/bg_nav_squircle"
+                android:contentDescription="@string/dock_calendar"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_calendar"
+                android:tint="@color/muted"
+                tools:ignore="UseAppTint" />
+
+            <ImageButton
+                android:id="@+id/dockButtonProfile"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="22dp"
+                android:background="@drawable/bg_nav_squircle"
+                android:contentDescription="@string/dock_profile"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_profile"
+                android:tint="@color/muted"
+                tools:ignore="UseAppTint" />
+        </LinearLayout>
+    </com.app.taskade_mobile.ui.PillBlurView>
+
+</merge>

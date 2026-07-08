@@ -5,29 +5,30 @@
     android:orientation="vertical">
 
     <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/notifPush"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/jakarta"
         android:minHeight="52dp"
         android:text="@string/settings_notif_push"
         android:textColor="@color/ink"
         android:textSize="15sp" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/notifSound"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/jakarta"
         android:minHeight="52dp"
         android:text="@string/settings_notif_sound"
         android:textColor="@color/ink"
         android:textSize="15sp" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/notifBadges"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/jakarta"
         android:minHeight="52dp"
         android:text="@string/settings_notif_badges"
         android:textColor="@color/ink"

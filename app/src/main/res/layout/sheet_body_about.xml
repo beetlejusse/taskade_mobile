@@ -5,29 +5,21 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/aboutVersion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/jakarta"
         android:text="@string/settings_version"
         android:textColor="@color/muted"
         android:textFontWeight="500"
         android:textSize="14sp" />
 
     <TextView
+        android:id="@+id/aboutSupport"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:minHeight="48dp"
-        android:gravity="center_vertical"
-        android:text="@string/settings_changelog"
-        android:textColor="@color/ink"
-        android:textSize="15sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/jakarta"
         android:minHeight="48dp"
         android:gravity="center_vertical"
         android:text="@string/settings_support"
@@ -35,9 +27,10 @@
         android:textSize="15sp" />
 
     <TextView
+        android:id="@+id/aboutFeedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/jakarta"
         android:minHeight="48dp"
         android:gravity="center_vertical"
         android:text="@string/settings_feedback"

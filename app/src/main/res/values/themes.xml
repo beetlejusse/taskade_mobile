@@ -1,23 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme — light "beige" Taskade theme. -->
+    <!-- Base application theme — light "Iris" theme (porcelain + electric violet). -->
     <style name="Base.Theme.Taskade_mobile" parent="Theme.Material3.Light.NoActionBar">
         <!-- Color roles -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorOnPrimary">@color/on_primary</item>
-        <item name="colorSurface">@color/cream_surface</item>
+        <item name="colorPrimaryContainer">@color/primary_soft</item>
+        <item name="colorOnPrimaryContainer">@color/primary</item>
+        <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/ink</item>
         <item name="colorOnSurfaceVariant">@color/muted</item>
         <item name="colorOutline">@color/outline</item>
         <item name="colorError">@color/danger</item>
-        <item name="android:colorBackground">@color/beige_background</item>
-        <item name="colorSurfaceContainerLowest">@color/cream_surface</item>
+        <item name="android:colorBackground">@color/canvas</item>
+        <item name="colorSurfaceContainerLowest">@color/surface</item>
 
-        <!-- Montserrat as the default family for plain widgets -->
-        <item name="fontFamily">@font/montserrat</item>
-        <item name="android:fontFamily">@font/montserrat</item>
+        <!-- Plus Jakarta Sans as the default family for plain widgets -->
+        <item name="fontFamily">@font/jakarta</item>
+        <item name="android:fontFamily">@font/jakarta</item>
 
-        <!-- Re-route the Material3 type scale to Montserrat -->
+        <!-- Re-route the Material3 type scale to the app families -->
         <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Taskade.HeadlineMedium</item>
         <item name="textAppearanceTitleLarge">@style/TextAppearance.Taskade.TitleLarge</item>
         <item name="textAppearanceBodyLarge">@style/TextAppearance.Taskade.BodyLarge</item>
@@ -27,11 +29,16 @@
         <!-- Default component styles -->
         <item name="materialButtonStyle">@style/Widget.Taskade.Button.Primary</item>
 
-        <!-- System bars: transparent for edge-to-edge, dark icons on light bg -->
+        <!-- Canvas everywhere: no white peeking behind the (gesture) nav area. -->
+        <item name="android:windowBackground">@color/canvas</item>
+
+        <!-- System bars: edge-to-edge, canvas, dark icons; no white contrast line. -->
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@color/beige_background</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
     </style>
 
     <style name="Theme.Taskade_mobile" parent="Base.Theme.Taskade_mobile" />

@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/userAvatar"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:background="@drawable/bg_avatar_user"
         android:contentDescription="@string/user_avatar"
         android:padding="7dp"
@@ -28,8 +28,9 @@
         android:layout_marginStart="44dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/bg_chat_bubble_user"
-        android:fontFamily="@font/montserrat"
-        android:lineSpacingMultiplier="1.15"
+        android:elevation="1dp"
+        android:fontFamily="@font/jakarta_medium"
+        android:lineSpacingMultiplier="1.2"
         android:paddingHorizontal="16dp"
         android:paddingVertical="12dp"
         android:textColor="@color/bubble_user_text"

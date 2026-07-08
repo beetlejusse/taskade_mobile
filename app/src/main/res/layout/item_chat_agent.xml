@@ -2,6 +2,7 @@
 <!-- DIVYA reply: agent avatar on the far left, bubble left-aligned. -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingHorizontal="18dp"
@@ -9,12 +10,12 @@
 
     <ImageView
         android:id="@+id/agentAvatar"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:background="@drawable/bg_avatar_agent"
         android:contentDescription="@string/agent_name"
-        android:padding="7dp"
-        android:src="@drawable/ic_agent"
+        android:padding="8dp"
+        android:src="@drawable/ic_agent_spark"
         app:layout_constraintBottom_toBottomOf="@id/agentBubble"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/agentBubble"
@@ -27,8 +28,9 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="44dp"
         android:background="@drawable/bg_chat_bubble_agent"
-        android:fontFamily="@font/montserrat"
-        android:lineSpacingMultiplier="1.15"
+        android:elevation="1dp"
+        android:fontFamily="@font/jakarta"
+        android:lineSpacingMultiplier="1.2"
         android:paddingHorizontal="16dp"
         android:paddingVertical="12dp"
         android:textColor="@color/bubble_agent_text"
@@ -38,7 +40,6 @@
         app:layout_constraintStart_toEndOf="@id/agentAvatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Hi, I'm DIVYA — how can I help you today?"
-        xmlns:tools="http://schemas.android.com/tools" />
+        tools:text="Hi, I'm DIVYA — how can I help you today?" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

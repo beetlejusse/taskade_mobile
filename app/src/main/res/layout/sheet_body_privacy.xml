@@ -5,19 +5,20 @@
     android:orientation="vertical">
 
     <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/privacyVisibility"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:checked="true"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/jakarta"
         android:minHeight="52dp"
         android:text="@string/settings_privacy_visibility"
         android:textColor="@color/ink"
         android:textSize="15sp" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/privacyAnalytics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/jakarta"
         android:minHeight="52dp"
         android:text="@string/settings_privacy_analytics"
         android:textColor="@color/ink"
