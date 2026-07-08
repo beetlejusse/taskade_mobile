@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.app.taskade_mobile" />
+                  <option name="mobileSdkAppId" value="1:223284142414:android:be9ef2db223479a43d3e1f" />
+                  <option name="projectId" value="taskademobile" />
+                  <option name="projectNumber" value="223284142414" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
