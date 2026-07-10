@@ -7,11 +7,15 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import com.app.taskade_mobile.core.enableSeamlessEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.app.taskade_mobile.auth.AuthManager
+import com.app.taskade_mobile.core.ServiceLocator
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withTimeout
 
 /**
  * Authenticated home screen. Acts as the app's gatekeeper: if there is no valid
@@ -29,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableSeamlessEdgeToEdge()
         setContentView(R.layout.activity_main)
         applyWindowInsets()
 
@@ -79,9 +83,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startLogout() {
-        // Native logins keep no browser session, so logout just clears local creds.
-        authManager.logout()
-        navigateToLogin()
+        // Best-effort: drop this device's push token while the session is still
+        // valid (bounded so a slow network can't block sign-out), THEN clear local
+        // creds and navigate. Native logins keep no browser session to sign out of.
+        setLoading(true)
+        lifecycleScope.launch {
+            runCatching {
+                withTimeout(5_000) { ServiceLocator.deviceTokenRepository.unregisterCurrentToken() }
+            }
+            authManager.logout()
+            navigateToLogin()
+        }
     }
 
     private fun navigateToLogin() {
