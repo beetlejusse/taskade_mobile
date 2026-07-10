@@ -2,4 +2,7 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
+    // Firebase google-services processor — applied in :app. Declared here so the
+    // plugin is on the classpath for the whole build.
+    alias(libs.plugins.google.services) apply false
 }
