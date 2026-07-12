@@ -217,4 +217,5 @@
     <string name="onboarding_save_failed">Couldn\'t save that — please try again.</string>
     <string name="onboarding_mic_unavailable">Voice input isn\'t available — please type instead.</string>
     <string name="onboarding_listening">Listening…</string>
+    <string name="onboarding_voice_no_match">Didn\'t catch that — try again or type it.</string>
 </resources>

@@ -11,6 +11,6 @@
         <domain includeSubdomains="true">127.0.0.1</domain>
         <!-- This PC's LAN IP, for testing on a physical device over Wi-Fi.
              Update if the PC's address changes. -->
-        <domain includeSubdomains="true">192.168.1.3</domain>
+        <domain includeSubdomains="true">192.168.1.4</domain>
     </domain-config>
 </network-security-config>
