@@ -38,21 +38,34 @@ class VoiceInput(private val context: Context) {
             recognizer = sr
 
             var settled = false
+            // Best hypothesis heard so far. Short answers like "8 am" frequently come
+            // back as ERROR_NO_MATCH / a premature timeout even though the recognizer
+            // DID transcribe them into a partial result — so we keep the latest partial
+            // and fall back to it on error instead of losing the answer entirely.
+            var lastPartial: String? = null
             fun settle(value: String?) {
                 if (settled) return
                 settled = true
-                if (cont.isActive) cont.resume(value)
+                if (cont.isActive) cont.resume(value?.trim()?.takeIf { it.isNotEmpty() })
             }
+
+            fun firstOf(bundle: Bundle?): String? =
+                bundle?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
+                    ?.firstOrNull()?.trim()?.takeIf { it.isNotEmpty() }
 
             sr.setRecognitionListener(object : RecognitionListener {
                 override fun onResults(results: Bundle?) {
-                    val list = results?.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)
-                    settle(list?.firstOrNull()?.trim()?.takeIf { it.isNotEmpty() })
+                    settle(firstOf(results) ?: lastPartial)
+                }
+
+                override fun onPartialResults(partialResults: Bundle?) {
+                    firstOf(partialResults)?.let { lastPartial = it }
                 }
 
                 override fun onError(error: Int) {
-                    Log.w(TAG, "speech error code=$error")
-                    settle(null)
+                    Log.w(TAG, "speech error code=$error (lastPartial=$lastPartial)")
+                    // Salvage a heard-but-not-finalized short utterance.
+                    settle(lastPartial)
                 }
 
                 override fun onReadyForSpeech(params: Bundle?) {}
@@ -60,7 +73,6 @@ class VoiceInput(private val context: Context) {
                 override fun onRmsChanged(rmsdB: Float) {}
                 override fun onBufferReceived(buffer: ByteArray?) {}
                 override fun onEndOfSpeech() {}
-                override fun onPartialResults(partialResults: Bundle?) {}
                 override fun onEvent(eventType: Int, params: Bundle?) {}
             })
 
@@ -69,7 +81,15 @@ class VoiceInput(private val context: Context) {
                     RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                     RecognizerIntent.LANGUAGE_MODEL_FREE_FORM,
                 )
-                putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, false)
+                // Keep partials so a short answer isn't lost to a NO_MATCH final.
+                putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true)
+                // Some OEM recognizers refuse to bind without the caller's package.
+                putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, context.packageName)
+                // Give a one-word answer room to breathe: don't end the session in the
+                // first moment, and allow a longer trailing silence before finalizing.
+                putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_MINIMUM_LENGTH_MILLIS, 1500)
+                putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_COMPLETE_SILENCE_LENGTH_MILLIS, 1500)
+                putExtra(RecognizerIntent.EXTRA_SPEECH_INPUT_POSSIBLY_COMPLETE_SILENCE_LENGTH_MILLIS, 1500)
                 if (!languageTag.isNullOrBlank()) {
                     putExtra(RecognizerIntent.EXTRA_LANGUAGE, languageTag)
                 }

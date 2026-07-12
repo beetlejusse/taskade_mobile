@@ -204,6 +204,10 @@ class OnboardingActivity : AppCompatActivity() {
                 inputField.setText(result.trim())
                 inputField.setSelection(inputField.text?.length ?: 0)
                 if (step == Step.NAME) enteredName = result.trim()
+            } else {
+                // Never fail silently — a short answer that the recognizer couldn't
+                // finalize should tell the user to retry or type, not look ignored.
+                toast(getString(R.string.onboarding_voice_no_match))
             }
         }
     }
@@ -321,13 +325,18 @@ class OnboardingActivity : AppCompatActivity() {
 
     private fun toast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
 
-    /** Parse "7am" / "7 am" / "19" / "7:30 pm" / "noon" into an hour 0-23, or null. */
+    /** Parse "7am" / "7 am" / "19" / "7:30 pm" / "noon" / "eight am" into an hour 0-23, or null. */
     private fun parseHour(raw: String?): Int? {
         val text = raw?.lowercase()?.trim() ?: return null
         if (text.isEmpty()) return null
         if (text.contains("noon")) return 12
         if (text.contains("midnight")) return 0
-        val num = Regex("\\d{1,2}").find(text)?.value?.toIntOrNull() ?: return null
+        // Digits first ("8 am"); fall back to a spelled-out number ("eight am") since
+        // free-form STT sometimes returns words. Token equality avoids "seventeen"
+        // matching "seven".
+        val num = Regex("\\d{1,2}").find(text)?.value?.toIntOrNull()
+            ?: text.split(Regex("[^a-z]+")).firstNotNullOfOrNull { WORD_HOURS[it] }
+            ?: return null
         var hour = num
         val pm = text.contains("pm")
         val am = text.contains("am")
@@ -339,6 +348,16 @@ class OnboardingActivity : AppCompatActivity() {
     companion object {
         private const val EXTRA_SUGGESTED_NAME = "extra_suggested_name"
         private const val DONE_DELAY_MS = 1500L
+
+        // Spelled-out hours for STT that returns words instead of digits ("eight am").
+        // Single tokens only (matched by equality) — "twenty one" resolves via "twenty".
+        private val WORD_HOURS: Map<String, Int> = mapOf(
+            "zero" to 0, "one" to 1, "two" to 2, "three" to 3, "four" to 4,
+            "five" to 5, "six" to 6, "seven" to 7, "eight" to 8, "nine" to 9,
+            "ten" to 10, "eleven" to 11, "twelve" to 12, "thirteen" to 13,
+            "fourteen" to 14, "fifteen" to 15, "sixteen" to 16, "seventeen" to 17,
+            "eighteen" to 18, "nineteen" to 19, "twenty" to 20,
+        )
 
         fun intent(context: Context, suggestedName: String?): Intent =
             Intent(context, OnboardingActivity::class.java).apply {
