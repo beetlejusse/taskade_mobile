@@ -18,6 +18,14 @@
     <!-- Coarse location → reverse-geocoded to "City, Country" for profile context. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <!-- Android 11+ package visibility: without this the on-device SpeechRecognizer
+         used by onboarding voice input can fail to see/bind the recognition service. -->
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
+
     <application
         android:name=".App"
         android:allowBackup="true"
