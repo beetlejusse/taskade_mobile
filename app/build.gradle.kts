@@ -30,9 +30,9 @@ android {
         buildConfigField("String", "API_BASE_URL", "\"https://taskade-backend.onrender.com/\"")
         buildConfigField("String", "WS_VOICE_URL", "\"wss://taskade-backend.onrender.com/ws/voice\"")
 
-        // Failover SECONDARY (Hugging Face). The client prefers the primary above and
-        // only switches here when the primary is unreachable (see BackendHostManager).
-        // Left empty for `debug` below, so local dev never fails over to production.
+//         Failover SECONDARY (Hugging Face). The client prefers the primary above and
+//         only switches here when the primary is unreachable (see BackendHostManager).
+//         Left empty for `debug` below, so local dev never fails over to production.
         buildConfigField("String", "API_BASE_URL_FALLBACK", "\"https://soge2020-taskade-backend.hf.space\"")
         buildConfigField("String", "WS_VOICE_URL_FALLBACK", "\"wss://soge2020-taskade-backend.hf.space/ws/voice\"")
 
@@ -47,8 +47,8 @@ android {
             //   • Emulator instead?  use  http://10.0.2.2:8000  /  ws://10.0.2.2:8000/ws/voice
             //   • NOTE: 127.0.0.1 means the PHONE itself, never your PC — don't use it.
             //   • If your PC's Wi-Fi IP changes, update it here AND in network_security_config.xml.
-//            buildConfigField("String", "API_BASE_URL", "\"http://192.168.1.3:8000\"")
-//            buildConfigField("String", "WS_VOICE_URL", "\"ws://192.168.1.3:8000/ws/voice\"")
+//            buildConfigField("String", "API_BASE_URL", "\"http://192.168.1.4:8000\"")
+//            buildConfigField("String", "WS_VOICE_URL", "\"ws://192.168.1.4:8000/ws/voice\"")
 //            // No secondary in debug — local dev must never fail over to a production host.
 //            buildConfigField("String", "API_BASE_URL_FALLBACK", "\"\"")
 //            buildConfigField("String", "WS_VOICE_URL_FALLBACK", "\"\"")
